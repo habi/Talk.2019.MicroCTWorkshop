@@ -65,7 +65,7 @@
 % And thicker plots by default
 % https://tex.stackexchange.com/a/235439/828
 % https://tex.stackexchange.com/q/262486/828
-\pgfplotsset{
+\pgfplotsset{%
 	every axis plot/.append style={semithick},
 	every axis/.append style={semithick}
 	every axis plot post/.append style={every mark/.append style={semithick}}
@@ -103,13 +103,18 @@
 }
 
 % Define us our custom footer
+% Footer alignment with the help of https://tex.stackexchange.com/a/398534/828
+% The alignment is not pixel-perfect, but good enough
+% See for yourself by uncommenting the next line
+%\setbeamercolor*{footline}{fg=orange,bg=ubRed} 
 \defbeamertemplate{footline}{unibe}{%
-	\hspace*{\fill}%
-	v. \href{https://github.com/habi/Talk.2019.MicroCTWorkshop/commit/\gitHash}{\gitAbbrevHash}\xspace|\xspace%
-	p.\xspace\insertframenumber/\inserttotalframenumber%
-	\hspace*{4ex}%
-	\vskip2pt%
-}
+	\begin{beamercolorbox}[wd=\paperwidth,sep=2pt]{footline}%
+		\hspace*{\fill}%
+		v. \href{https://github.com/habi/Talk.2019.MicroCTWorkshop/commit/\gitHash}{\gitAbbrevHash}\xspace|\xspace%
+		p.\xspace\insertframenumber/\inserttotalframenumber%
+		\hspace*{2pt}%
+	\end{beamercolorbox}%
+}%
 \setbeamertemplate{footline}[unibe]
 
 % Format bibliography for beamer
@@ -223,7 +228,8 @@
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.5\linewidth}
-		\renewcommand{\imsize}{0.8\linewidth}%
+		\renewcommand{\imsize}{0.75\linewidth}%
+		\centering
 		\only<1>{%
 			\pgfmathsetlength{\imagewidth}{\imsize}%
 			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
@@ -260,7 +266,7 @@
 		\includegraphics<5>[width=\imsize]{./img/CTAn}%
 		\only<6>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
-			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
+			\animategraphics[loop,autoplay,width=\imsize,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
 			\source{gph.is/2nqkple}{}%
 			}%
 		\end{column}
@@ -388,6 +394,14 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Tuesday lunch}
+\centering
+\huge
+Choose your \faPizzaSlice
+
+Go to \href{https://doodle.com/poll/6ci4dvpr88wvzwzn}{small.cat/low} \& note your preference
+\end{frame}
+
 \begin{frame}
 	\frametitle{References}
 	%\renewcommand*{\bibfont}{\scriptsize}
@@ -399,7 +413,8 @@
 	\frametitle{Colophon}
 	\begin{itemize}
 		\item \href{https://github.com/habi/Talk.2019.MicroCTWorkshop}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub}: git.io/Je4oh
-		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}. Details are found in~\cite{Messerli2019a}: git.io/fjuoF
+		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}: git.io/fjuoF\newline
+			Details are described in~\cite{Messerli2019a}: 
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
 \end{frame}
