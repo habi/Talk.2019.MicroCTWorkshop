@@ -2,6 +2,7 @@
 % latexmk -pdf -pvc -interaction=nonstopmode
 %\documentclass[aspectratio=169,10pt,draft]{beamer}
 \documentclass[aspectratio=169,10pt]{beamer}
+%\documentclass[notes=only,aspectratio=169,10pt,draft]{beamer} % print out the notes
 
 \usetheme{UniBern}
 \title{Welcome \& Hello!}
@@ -165,7 +166,7 @@
 			\end{tcolorbox}
 			\item You will receive your access code by SMS
 		\end{itemize}
-	\end{itemize}	
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Tuesday lunch}
@@ -179,17 +180,17 @@ Go to \href{https://doodle.com/poll/6ci4dvpr88wvzwzn}{small.cat/low} \& mark you
 \begin{frame}
 	\frametitle{Hello!}
 	\begin{itemize}
-		\item<1-> University of Bern, Switzerland
-		\item<1-> Institute of Anatomy
-		\item<1-> \uct-group: Ruslan Hlushchuk, David Haberthür, Oleksiy-Zakhar Khoma, Fluri Wieland, Carlos Correa Shokiche
-		\item<1-> Biomedical research
+		\item University of Bern, Switzerland
+		\item Institute of Anatomy
+		\item \uct-group: Ruslan Hlushchuk, David Haberthür, Oleksiy-Zakhar Khoma, Fluri Wieland, Carlos Correa Shokiche
+		\item Biomedical research
 		\begin{itemize}
 			\item microangioCT~\cite{Hlushchuk2018}: Tumor vasculature, angiogenesis in the heart, musculature and bones
 			\item Cancer research: Melanoma
 			\item Lung imaging: Tumor detection and classification
 			\item Physiology: Zebrafish musculature and gills~\cite{Messerli2019a}
 		\end{itemize}
-		\item<1-> SkyScan 1172 \& 1272 \uncover<2->{\& 2214}
+		\item SkyScan 1172 \& 1272 \uncover<2->{\& 2214}
 	\end{itemize}
 \end{frame}
 
@@ -219,69 +220,67 @@ Go to \href{https://doodle.com/poll/6ci4dvpr88wvzwzn}{small.cat/low} \& mark you
 	\end{tikzpicture}%
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{How?}
 	\begin{columns}
-		\begin{column}{0.48\linewidth}
-				\begin{itemize}
-					\item Training, for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day} at \SI{66}{\percent} of critical speed~\cite{Palstra2010}%
-					\item<3-> Critical point drying%
-					\item<4-> \uct imaging%
-					\item<5-> Delineation in CTAn%
-					\item<6-> Image analysis~\cite{Haberthur2019a}%
-					\begin{itemize}
-						\item<6-> Gill volume, structure and complexity%
-					\end{itemize}
-				\end{itemize}
-		\end{column}
-		\begin{column}{0.48\linewidth}
-		\begin{overprint}
-			\centering
-			\only<1>{%
-					\pgfmathsetlength{\imagewidth}{\imsize}%
-					\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
-					\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
-					\def\y{547}% scalebar-y at 90% of image height of 608px = 547
-					\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
-						\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};%
-						% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
-						%\draw[|-|,blue] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter} (TEMPORARY)};
-						\draw[|-|,white] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};%
-					\end{tikzpicture}%
-					}%
-				\only<2>{%
-					% If you don't have the frames for the video, you can generate them as specified in ./mov/fishvideo/README.md
-					\animategraphics[loop,autoplay,width=\imsize,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}%
-					}%
-				\renewcommand{\imsize}{0.8\linewidth}					
-				\only<3>{%
-					\pgfmathsetlength{\imagewidth}{\imsize}%
-					\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
-					\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
-					\def\y{673}% scalebar-y at 90% of image height of 748px = 673
-					\def\shadow{4}% shadow parameter for scalebar
-					\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-						\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{IMG_20190603_174659}}}};
-						% 294px = 12.5mm > 100px = 4250um > 118px = 5mm
-						%\draw[|-|,blue,thick] (494,218) -- (624,481) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{12.5}{\milli\meter} (294px) TEMPORARY!};
-						\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+118+\shadow,\y+\shadow) node [midway, above] {\SI{5}{\milli\meter}};
-						\draw[|-|,white] (\x,\y) -- (\x+118,\y) node [midway,above] {\SI{5}{\milli\meter}};
-					\end{tikzpicture}%
-					}%
-				\only<4>{%
-					\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control05/proj/Control05.log}%
-					}%
-				\includegraphics<5>[width=\imsize]{./img/CTAn}%
-				\renewcommand{\imsize}{\linewidth}									
-				\only<6>{%
-					% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
-					\animategraphics[loop,autoplay,width=\imsize,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
-					\source{gph.is/2nqkple}{}%
-					}%
-			\end{overprint}
+	\begin{column}{0.48\linewidth}
+		\begin{itemize}
+			\item Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed~\cite{Palstra2010}
+			\item<3-> Critical point drying
+			\item<4-> \uct imaging
+			\item<5-> Delineation in CTAn
+			\item<6-> Image Analysis~\cite{Haberthur2019a}
+			\begin{itemize}
+				\item<6-> Gill volume and complexity
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.48\linewidth}
+		\only<1>{%
+			\pgfmathsetlength{\imagewidth}{\imsize}%
+			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
+			\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
+			\def\y{547}% scalebar-y at 90% of image height of 608px = 547
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};%
+				% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
+				%\draw[|-|,blue] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter} (TEMPORARY)};
+				\draw[|-|,white] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};%
+			\end{tikzpicture}%
+			}%
+		\only<2>{%
+			% If you don't have the frames for the video, you can generate them as specified in ./mov/fishvideo/README.md
+			\animategraphics[loop,autoplay,width=\imsize,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}%
+			}%
+		\only<3>{%
+			\pgfmathsetlength{\imagewidth}{\imsize}%
+			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
+			\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
+			\def\y{673}% scalebar-y at 90% of image height of 748px = 673
+			\def\shadow{4}% shadow parameter for scalebar
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{IMG_20190603_174659}}}};
+				% 294px = 12.5mm > 100px = 4250um > 118px = 5mm
+				%\draw[|-|,blue,thick] (494,218) -- (624,481) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{12.5}{\milli\meter} (294px) TEMPORARY!};
+				\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+118+\shadow,\y+\shadow) node [midway, above] {\SI{5}{\milli\meter}};
+				\draw[|-|,white] (\x,\y) -- (\x+118,\y) node [midway,above] {\SI{5}{\milli\meter}};
+			\end{tikzpicture}%
+			}
+		\only<4>{%
+			\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control05/proj/Control05.log}%
+			}
+		\includegraphics<5>[height=0.618\textheight]{./img/CTAn}%
+		\only<6>{%
+			% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
+			\animategraphics[loop,autoplay,width=\imsize,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
+			\source{gph.is/2nqkple}{}%
+			}
 		\end{column}
 	\end{columns}
 \end{frame}
+\note{Comparable with the weekly training routine of Michael Phelps.
+	The fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults.
+	The Olympic winner trained for half of his lifetime and started as child.}
 \note{Comparable with the weekly training routine of Michael Phelps.
 	The fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults.
 	The Olympic winner trained for half of his lifetime and started as child.}
@@ -379,7 +378,7 @@ Go to \href{https://doodle.com/poll/6ci4dvpr88wvzwzn}{small.cat/low} \& mark you
 \begin{frame}
 	\frametitle{Thanks!}
 	\begin{columns}
-		\begin{column}{0.5\linewidth}
+		\begin{column}{0.48\linewidth}
 		\begin{itemize}
 			\item Topographic and clinical Anatomy
 			\begin{itemize}
@@ -398,7 +397,7 @@ Go to \href{https://doodle.com/poll/6ci4dvpr88wvzwzn}{small.cat/low} \& mark you
 			\item<3-> Questions?
 		\end{itemize}
 		\end{column}
-		\begin{column}{0.5\linewidth}
+		\begin{column}{0.48\linewidth}
 			\includegraphics<1->[height=.7\textheight]{./img/team}
 		\end{column}
 	\end{columns}
